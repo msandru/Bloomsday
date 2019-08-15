@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Bloomsday</string>
+
+    <string-array name="characters">
+        <item>Pilgrim</item>
+        <item>Warrior</item>
+        <item>Nymph</item>
+    </string-array>
+
+    <string name="title1">Welcome</string>
+    <string name="title2">Do your Research</string>
+    <string name="title3">Grow your audience</string>
+
+    <string name="description1">Embark on an awe-inspiring pilgrimage to Dublin to visit all the places featured in Ulysses by James Joyce.</string>
+    <string name="description2">Every June 16, thousands of people dress up like the characters, take to the streets, and read the book aloud.</string>
+    <string name="description3">Meet like-minded people, share deep, meaningful conversations and step out of your comfort zone while traveling.</string>
+
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="done">Done</string>
+
+    <string name="goodMorning">Good Morning!</string>
+    <string name="goodAfternoon">Good Afternoon!</string>
+    <string name="goodNight">Good Night!</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_choose_character_activity">ChooseCharacterActivity</string>
+    <string name="title_activity_login_activity">LoginActivity</string>
+    <string name="title_activity_register_activity">RegisterActivity</string>
+    <string name="title_activity_reset_password_activity">ResetPasswordActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="collection_users">Users</string>
+    <string name="collection_user_locations">User Locations</string>
+    <string name="google_maps_key">AIzaSyAiswvjTaqdceNokpICY0S8Is-qyP5agDk</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

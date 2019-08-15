@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "856063444742",
+    "firebase_url": "https://bloomsday-27.firebaseio.com",
+    "project_id": "bloomsday-27",
+    "storage_bucket": "bloomsday-27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856063444742:android:52b64f50268faff2",
+        "android_client_info": {
+          "package_name": "com.example.bloomsday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856063444742-dc7u3pop3vlv63iven9bl88bl5s1hhhf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bloomsday",
+            "certificate_hash": "91b1d95673a269d7fb0bdb33ac848c7aa367f97a"
+          }
+        },
+        {
+          "client_id": "856063444742-epsq64a0ubvb0c7bubg6f6s54649e5m8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFS6-GHkmhOUCUkUtKrRb8ttLon8SUwiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856063444742-epsq64a0ubvb0c7bubg6f6s54649e5m8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
