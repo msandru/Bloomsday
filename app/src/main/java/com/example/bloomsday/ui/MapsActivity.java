@@ -568,8 +568,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 polylineData.getPolyline().setZIndex( 1 );
 
                 LatLng endLocation = new LatLng(
-                        polylineData.getLeg().endLocation.lat - 0.00001,
-                        polylineData.getLeg().endLocation.lng - 0.00001
+                        polylineData.getLeg().endLocation.lat,
+                        polylineData.getLeg().endLocation.lng
                 );
 
                 Marker marker = mMap.addMarker( new MarkerOptions()
