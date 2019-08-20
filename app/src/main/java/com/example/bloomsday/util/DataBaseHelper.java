@@ -16,7 +16,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "locations.db";
 
     public DataBaseHelper(Context context) {
-        super( context, DATABASE_NAME, null, 4 );
+        super( context, DATABASE_NAME, null, 5 );
 
     }
 
@@ -30,7 +30,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        if( i < 4)
+        if( i < 5)
             sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS locations_data" );
         onCreate( sqLiteDatabase );
     }
