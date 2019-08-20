@@ -289,6 +289,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper( this );
         Cursor cursor;
+        dataBaseHelper.addLocations(  );
         cursor = dataBaseHelper.getAllData();
         if (cursor.getCount() == 0) {
             Log.d( "DataBaseHelper", "Error getting data" );
