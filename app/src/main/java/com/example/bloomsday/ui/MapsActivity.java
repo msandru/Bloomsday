@@ -288,9 +288,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void addLandmarksMarker() {
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper( this );
-
-        dataBaseHelper.addLocations();
-
         Cursor cursor;
         cursor = dataBaseHelper.getAllData();
         if (cursor.getCount() == 0) {
