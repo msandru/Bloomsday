@@ -16,7 +16,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "locations.db";
 
     public DataBaseHelper(Context context) {
-        super( context, DATABASE_NAME, null, 7 );
+        super( context, DATABASE_NAME, null, 1 );
 
     }
 
@@ -25,15 +25,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         String createTable = "CREATE TABLE IF NOT EXISTS locations_data ( ID INTEGER PRIMARY KEY AUTOINCREMENT, LATITUDE REAL, LONGITUDE REAL, LANDMARK TEXT, PHOTO INT, CHAPTER TEXT);";
         sqLiteDatabase.execSQL( createTable );
+        addLocations(sqLiteDatabase);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        if( i < 7)
+        if( i < 9)
             sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS locations_data" );
         onCreate( sqLiteDatabase );
-        addLocations(sqLiteDatabase);
+        SQLiteDatabase database = this.getReadableDatabase();
+        if(database.rawQuery( "SELECT * FROM locations_data", null ).getCount() == 0){
+        addLocations(sqLiteDatabase);}
+    }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        if( i > 1)
+            sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS locations_data" );
+        onCreate( sqLiteDatabase );
+        SQLiteDatabase database = this.getReadableDatabase();
+        if(database.rawQuery( "SELECT * FROM locations_data", null ).getCount() == 0){
+            addLocations(sqLiteDatabase);}
     }
 
 
@@ -58,7 +71,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         addLocation( sqLiteDatabase,53.277911, -6.105844, "Clifton School", R.drawable.picture2, "Chapter: Nestor" );
         addLocation( sqLiteDatabase,53.328541, -6.208925, "Sandymount Strand", R.drawable.picture3, "Chapter: Nausicaa" );
         addLocation( sqLiteDatabase,53.372621, -6.276828, "Glasnevin Cemetery", R.drawable.picture4, "Chapter: Hades" );
-        addLocation( sqLiteDatabase,53.346327, -6.250293, "Princes Street", R.drawable.picture5, "Chapter: The Aleous" );
+        addLocation(sqLiteDatabase,53.346327, -6.250293, "Princes Street", R.drawable.picture5, "Chapter: The Aleous" );
         addLocation( sqLiteDatabase,53.341098, -6.254482, "National Library of Ireland", R.drawable.picture6, "Chapter: Scylla and Charybdis" );
         addLocation( sqLiteDatabase,53.342292, -6.259751, "Grafton Street", R.drawable.picture7, "Chapter: The Wandering Rocks" );
         addLocation( sqLiteDatabase,53.349341, -6.269803, "Barney Kiernan's", R.drawable.picture9, "Chapter: The Cyclops" );
