@@ -18,6 +18,7 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -289,14 +290,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper( this );
         Cursor cursor;
-        dataBaseHelper.addLocations(  );
         cursor = dataBaseHelper.getAllData();
+
         if (cursor.getCount() == 0) {
             Log.d( "DataBaseHelper", "Error getting data" );
-            return;
         }
 
         while (cursor.moveToNext()) {
+            Log.d(TAG, "The cursor points to latitude: " + cursor.getDouble( 1 ));
+            Log.d(TAG, "The cursor points to longitude: " + cursor.getDouble( 2 ));
             createMapMarker( mMap, cursor.getDouble( 1 ), cursor.getDouble( 2 ), cursor.getString( 3 ), cursor.getInt( 4 ), cursor.getString( 5 ) );
         }
 
