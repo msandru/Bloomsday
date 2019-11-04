@@ -1,9 +1,10 @@
-package com.example.bloomsday.fragments;
+package com.example.bloomsday.adapters;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.bloomsday.fragments.FirstFragment;
 import com.example.bloomsday.fragments.SecondFragment;
 import com.example.bloomsday.fragments.ThirdFragment;
 

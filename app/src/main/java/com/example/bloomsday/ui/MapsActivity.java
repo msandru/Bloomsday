@@ -27,6 +27,10 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.bloomsday.R;
@@ -93,6 +97,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GeoApiContext mGeoApiContext;
     private ArrayList<Marker> mTripMarkers = new ArrayList<>();
     private Marker mSelectedMarker = null;
+    private ImageButton chatButton;
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -118,6 +123,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (mGeoApiContext == null) {
             mGeoApiContext = new GeoApiContext.Builder().apiKey( getString( R.string.google_api_key ) ).build();
         }
+        chatButton = (ImageButton) findViewById( R.id.chatButton );
+        chatButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toChatActivity = new Intent( getApplicationContext(), ChatActivity.class );
+                startActivity( toChatActivity);
+            }
+        } );
 
     }
 
@@ -190,7 +203,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 ACCESS_FINE_LOCATION )
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermissionGranted = true;
-            Log.d( TAG, "Everything is fine!" );
             setUserDetails();
         } else {
             ActivityCompat.requestPermissions( this,
@@ -206,7 +218,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable( MapsActivity.this );
 
         if (available == ConnectionResult.SUCCESS) {
-            //everything is fine and the user can make map requests
             Log.d( TAG, "isServicesOK: Google Play Services is working" );
             return true;
         } else if (GoogleApiAvailability.getInstance().isUserResolvableError( available )) {
@@ -218,6 +229,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText( this, "You can't make map requests", Toast.LENGTH_SHORT ).show();
         }
         return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+        mLocationPermissionGranted = false;
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    mLocationPermissionGranted = true;
+                }
+            }
+        }
     }
 
     public void startLocationService() {
@@ -534,6 +561,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -606,6 +634,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         super.onDestroy();
     }
-
 
 }

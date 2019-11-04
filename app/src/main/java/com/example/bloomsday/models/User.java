@@ -9,6 +9,7 @@ public class User implements Parcelable {
     private String user_id;
     private String username;
     private String avatar;
+    private  String status;
 
     public User(String email, String user_id, String username, String avatar) {
         this.email = email;
@@ -76,6 +77,13 @@ public class User implements Parcelable {
         this.username = username;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     @Override
     public String toString() {
         return "User{" +

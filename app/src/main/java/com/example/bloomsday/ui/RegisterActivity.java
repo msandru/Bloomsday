@@ -99,6 +99,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 user.setEmail( mEmail );
                                 user.setUsername( mEmail.substring( 0, mEmail.indexOf( "@" ) ) );
                                 user.setUser_id( mAuth.getCurrentUser().getUid() );
+                                user.setAvatar(Integer.toString(  R.drawable.avatardefault )) ;
+                                user.setStatus( "offline" );
                                 FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().
                                         setTimestampsInSnapshotsEnabled( true )
                                         .build();

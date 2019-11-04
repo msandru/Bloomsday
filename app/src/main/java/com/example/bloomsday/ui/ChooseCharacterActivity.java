@@ -5,16 +5,14 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.example.bloomsday.R;
+import com.example.bloomsday.adapters.CharactersAdapter;
 import com.example.bloomsday.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.maps.GeoApiContext;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +27,7 @@ import android.widget.ListView;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import com.example.bloomsday.adapters.CharactersAdapter;
 
 public class ChooseCharacterActivity extends AppCompatActivity {
 
@@ -44,7 +42,7 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_choose_character_activity );
         int[] drawableIds = {R.drawable.bloomsday1,
-                R.drawable.bloomsday2, R.drawable.bloomsday3};
+                R.drawable.bloomsday2, R.drawable.bloomsday3, R.drawable.avatardefault};
         constraintLayout = findViewById( R.id.chooseCharacter );
         Calendar gregorianCalendar = Calendar.getInstance();
         int timeOfDay = gregorianCalendar.get( GregorianCalendar.HOUR_OF_DAY );
@@ -78,6 +76,9 @@ public class ChooseCharacterActivity extends AppCompatActivity {
                                 newUser.setAvatar( R.drawable.bloomsday2 + "" );
                             } else if (i == 2) {
                                 newUser.setAvatar( R.drawable.bloomsday3 + "" );
+                            } else if (i == 3) {
+                                newUser.setAvatar( R.drawable.avatardefault + "" );
+
                             }
                             locationRef.set( newUser );
 
@@ -93,8 +94,12 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         myListView.setOnItemClickListener( itemClickListener );
 
         Toolbar toolbar = findViewById( R.id.toolbar );
+
         setSupportActionBar( toolbar );
-        getSupportActionBar().hide();
+
+        getSupportActionBar().
+
+                hide();
 
 
     }

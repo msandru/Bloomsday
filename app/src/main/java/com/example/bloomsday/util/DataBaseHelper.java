@@ -13,7 +13,7 @@ import com.example.bloomsday.R;
 import java.sql.Connection;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "locations.db";
+    public static final String DATABASE_NAME = "bloom.db";
 
     public DataBaseHelper(Context context) {
         super( context, DATABASE_NAME, null, 1 );
@@ -23,7 +23,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String createTable = "CREATE TABLE IF NOT EXISTS locations_data ( ID INTEGER PRIMARY KEY AUTOINCREMENT, LATITUDE REAL, LONGITUDE REAL, LANDMARK TEXT, PHOTO INT, CHAPTER TEXT);";
+        String createTable = "CREATE TABLE IF NOT EXISTS bloomsday ( ID INTEGER PRIMARY KEY AUTOINCREMENT, LATITUDE REAL, LONGITUDE REAL, LANDMARK TEXT, PHOTO INT, CHAPTER TEXT);";
         sqLiteDatabase.execSQL( createTable );
         addLocations(sqLiteDatabase);
 
@@ -32,17 +32,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         if( i < 9)
-            sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS locations_data" );
+            sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS bloomsday" );
         onCreate( sqLiteDatabase );
         SQLiteDatabase database = this.getReadableDatabase();
         if(database.rawQuery( "SELECT * FROM locations_data", null ).getCount() == 0){
-        addLocations(sqLiteDatabase);}
+            addLocations(sqLiteDatabase);}
     }
 
     @Override
     public void onDowngrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         if( i > 1)
-            sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS locations_data" );
+            sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS bloomsday" );
         onCreate( sqLiteDatabase );
         SQLiteDatabase database = this.getReadableDatabase();
         if(database.rawQuery( "SELECT * FROM locations_data", null ).getCount() == 0){
@@ -57,7 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put( "LANDMARK", landmark );
         contentValues.put( "PHOTO", photo );
         contentValues.put( "CHAPTER", chapter );
-        long result = sqLiteDatabase.insert( "locations_data", null, contentValues );
+        long result = sqLiteDatabase.insert( "bloomsday", null, contentValues );
         if (result == -1)
             Log.d( "DataBaseHelper", "Data not inserted " + landmark );
         else
@@ -79,7 +79,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllData() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery( "SELECT * FROM locations_data", null );
+        Cursor res = sqLiteDatabase.rawQuery( "SELECT * FROM bloomsday", null );
         return res;
     }
 

@@ -1,4 +1,4 @@
-package com.example.bloomsday.ui;
+package com.example.bloomsday.adapters;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,7 +23,7 @@ public class CharactersAdapter extends BaseAdapter {
     LayoutInflater mInflater; //Instantiates a layout XML file into its corresponding View objects.
     private int[] image;
 
-    CharactersAdapter(Context c, String[] characters, String[] descriptions, int[] imageIds) {
+    public CharactersAdapter(Context c, String[] characters, String[] descriptions, int[] imageIds) {
         this.characters = characters;
         this.descriptions = descriptions;
         image = imageIds;

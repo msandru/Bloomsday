@@ -5,6 +5,7 @@
         <item>Pilgrim</item>
         <item>Warrior</item>
         <item>Nymph</item>
+        <item>Prophet</item>
     </string-array>
 
     <string name="title1">Welcome</string>
@@ -31,8 +32,11 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="collection_users">Users</string>
     <string name="collection_user_locations">User Locations</string>
+    <string name="collection_chat_messages">ChatMessages</string>
     <string name="google_maps_key">AIzaSyAiswvjTaqdceNokpICY0S8Is-qyP5agDk</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_message">MessageActivity</string>
 </resources>
