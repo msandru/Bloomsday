@@ -106,7 +106,7 @@ public class LocationService extends Service {
                             }
                         } );
                     } catch (NullPointerException e) {
-                        Log.e( TAG, "saveUserLocation: User instance is null, stopping location service." );
+                        Log.e( TAG, "saveUserLocation: User instance is null" );
                         Log.e( TAG, "saveUserLocation: NullPointerException: " + e.getMessage() );
                         stopSelf();
                     }
